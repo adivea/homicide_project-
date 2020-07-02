@@ -4,27 +4,31 @@ author: "Daniel Frandsen"
 date: "7/2/2020"
 output: html_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# indlæsning af pakke 
+I det her projekt bruger vi tidyverse bla bla bla 
+```{r}
+library(tidyverse)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+# Import af data 
+skal hente csv fil ind så vi kan arbejde med den i r
+```{r}
+homicide <- read_csv("data/homicide-rates-across-western-europe.csv")
 ```
 
-## Including Plots
+Read csv kommer fra read r som er en del af tidyverse universet
+Efter at have kørt den ovenstående kommando er data indlæst dog beskeden R giver fortæller hvilken datatype den har genkendt kollonerne som. Altså om det er tekst eller tal. col_character  er karaktertegn og col_double er tal 
 
-You can also embed plots, for example:
+# Datavisualisering 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+homicide %>% 
+  filter(Entity=="England") %>% 
+  ggplot(aes(x = Year, y = `Homicide rate in Europe over long-term (per 100,000) (homicides per 100,000 people)`)) +
+  geom_col() +
+  xlab(NULL) +
+      labs(x = "year",
+      y = "homicide rate per 100,000 population",
+      title = "Developement in historical homicide, England")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
