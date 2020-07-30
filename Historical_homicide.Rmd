@@ -5,7 +5,7 @@ date: "7/2/2020"
 output: html_document
 ---
 # indlæsning af pakke 
-I det her projekt bruger vi tidyverse bla bla bla 
+I det her projekt bruger vi tidyverse.  
 ```{r}
 library(tidyverse)
 ```
