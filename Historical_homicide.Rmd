@@ -20,15 +20,68 @@ Read csv kommer fra read r som er en del af tidyverse universet
 Efter at have kørt den ovenstående kommando er data indlæst dog beskeden R giver fortæller hvilken datatype den har genkendt kollonerne som. Altså om det er tekst eller tal. col_character  er karaktertegn og col_double er tal 
 
 # Datavisualisering 
-
 ```{r}
 homicide %>% 
   filter(Entity=="England") %>% 
   ggplot(aes(x = Year, y = `Homicide rate in Europe over long-term (per 100,000) (homicides per 100,000 people)`)) +
   geom_col() +
-  xlab(NULL) +
       labs(x = "year",
       y = "homicide rate per 100,000 population",
-      title = "Developement in historical homicide, England")
+      title = "Development in historical homicide, England")
 ```
 
+```{r}
+homicide %>% 
+  filter(Entity=="Italy") %>% 
+  ggplot(aes(x = Year, y = `Homicide rate in Europe over long-term (per 100,000) (homicides per 100,000 people)`)) +
+  geom_col() +
+      labs(x = "year",
+      y = "homicide rate per 100,000 population",
+      title = "Development in historical homicide, Italy")
+```
+
+```{r}
+homicide %>% 
+  filter(Entity=="Scandinavia") %>% 
+  ggplot(aes(x = Year, y = `Homicide rate in Europe over long-term (per 100,000) (homicides per 100,000 people)`)) +
+  geom_col() +
+      labs(x = "year",
+      y = "homicide rate per 100,000 population",
+      title = "Development in historical homicide, Scandinavia")
+```
+
+```{r}
+homicide %>% 
+  filter(Entity=="Germany and Switzerland") %>% 
+  ggplot(aes(x = Year, y = `Homicide rate in Europe over long-term (per 100,000) (homicides per 100,000 people)`)) +
+  geom_col() +
+      labs(x = "year",
+      y = "homicide rate per 100,000 population",
+      title = "Development in historical homicide, Germany and Switzerland")
+```
+
+```{r}
+homicide %>% 
+  filter(Entity=="Netherlands and Belgium") %>% 
+  ggplot(aes(x = Year, y = `Homicide rate in Europe over long-term (per 100,000) (homicides per 100,000 people)`)) +
+  geom_col() +
+      labs(x = "year",
+      y = "homicide rate per 100,000 population",
+      title = "Development in historical homicide, Netherlands and Belgium")
+```
+
+
+```{r}
+homicide %>% 
+  #mutate(Year= as.character(Year)) %>% 
+  #filter(Entity=="England") %>% 
+  ggplot(aes(x = Year, y = `Homicide rate in Europe over long-term (per 100,000) (homicides per 100,000 people)`)) +
+  facet_wrap(~Entity,ncol=3)+
+  geom_col() +
+      labs(x = "year",
+      y = "homicide rate per 100,000 population",
+      title = "Development in historical homicide, All countries")
+```
+Vi visualiserer ggplot 2 som er en del af tidyverse universet 
+Forklar hvad man gør i koderne 
+geom_col fortæller ggplot 2, at den skal lave søjlediagrammer 
